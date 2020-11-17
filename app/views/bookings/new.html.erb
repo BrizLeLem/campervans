@@ -1,0 +1,8 @@
+<h1>New Booking</h1>
+
+<%= simple_form_for([@campervan, @booking]) do |f| %>
+      <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.submit 'BOOK!' %>
+<% end %>
+
