@@ -2,24 +2,13 @@
 
 
 <h1><strong><%= @campervan.title %></strong></h1>
-
-<p><%= @campervan.location %></p>
-
-<% if @campervan.photo.blank? %>
-    This campervan has no photo yet!
-<% else %>
-  <% @campervan.photos.each do |photo| %>
-  <li><%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %></li>
-  <% end %>
-<% end %>
-
 <div>
   <%= @campervan.brand %>
   <%= @campervan.model %>
   <%= @campervan.capacity %>
-  <strong><%= @campervan.price %></strong>
+  <strong><%= @campervan.price_per_night %></strong>
 </div>
 
 <div>
-  <%= link_to 'BOOK NOW!', new_booking_path %>
+  <%= link_to 'BOOK NOW!', new_campervan_booking_path(@campervan) %>
 </div>

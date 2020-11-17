@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "faker"
+gem 'dotenv-rails', groups: %i[development test]
+gem "cloudinary"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -63,3 +65,6 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'devise'
+
+gem 'date_wrapper'
+
