@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @campervan = Campervan.find(params[:id])
+    @campervan = Campervan.find(params[:campervan_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.campervan = @campervan

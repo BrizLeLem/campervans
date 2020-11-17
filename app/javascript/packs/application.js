@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import flatpickr from "flatpickr";
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -33,8 +34,9 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // const element = document.querySelector("#booking_start_date")
-  flatpickr(".datepicker", {
-
+  flatpickr("#booking_start_date", {
+    minDate: new Date(),
+        "plugins": [new rangePlugin({ input: "#booking_end_date"})],
   });
 
 });

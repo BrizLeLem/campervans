@@ -14,7 +14,11 @@ class CampervansController < ApplicationController
 
   def create
     @campervan = Campervan.new(campervan_params)
-    @campervan.save
+    if @campervan.save
+      redirect_to campervan_path(@campervan), notice: 'Your campervan was successfully created! 🚐'
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -24,7 +28,7 @@ class CampervansController < ApplicationController
   private
 
   def campervan_params
-    params.require(:campervan).permit(:title, :description, :photo)
+    params.require(:campervan).permit(:title, :description, :brand, :model, :photo, :capacity, :price_per_night)
   end
 
   def set_campervan
