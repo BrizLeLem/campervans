@@ -40,10 +40,19 @@ models = %w(X1 T3 W7 LT DRIVE SUPER quicks)
 
 puts "Creating 5 campervans and assigning them to the 2 owners..."
 
+c = 1
 5.times do
-campervan = Campervan.new(title: Faker::FunnyName.two_word_name, description: Faker::GreekPhilosophers.quote, brand: brands.sample, model: models.sample, capacity: (1..6).to_a.sample, price_per_night: (40..100).to_a.sample)
-campervan.user = campervan_owners.sample
-campervan.save
+  number = (1..4).to_a.sample
+  p "using picture #{number}"
+  filepath = "./db/seed-images/camper#{number}.jpeg"
+  file = File.open(filepath)
+  puts "creating campervan #{c}"
+  filename = "camper#{c}.jpeg"
+  campervan = Campervan.new(title: Faker::FunnyName.two_word_name, description: Faker::GreekPhilosophers.quote, brand: brands.sample, model: models.sample, capacity: (1..6).to_a.sample, price_per_night: (40..100).to_a.sample)
+  campervan.user = campervan_owners.sample
+  campervan.photo.attach(io: file, filename: filename, content_type: 'image/jpeg')
+  campervan.save
+  c += 1
 end
 
 puts "Creating 10 bookings randomly for all users"
@@ -66,3 +75,5 @@ booking.campervan = campervan
 booking.user = user
 booking.save
 end
+
+p "DOOOOOONE!!!!!!!! GET BACK TO WORK!!!!!!"
