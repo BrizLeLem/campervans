@@ -59,3 +59,5 @@ end
   booking.user = user
   booking.save
 end
+
+p "seeds created"
