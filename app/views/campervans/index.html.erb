@@ -3,11 +3,10 @@
 <ul>
   <% @campervans.each do |campervan| %>
         <li>
-          <%= campervan.photos %>
           <%= link_to campervan.title, campervan_path(campervan) %>
           <%= campervan.brand %>
           <%= campervan.model %>
-          <%= campervan.price %>
+          <%= campervan.price_per_night %>
         </li>
   <% end %>
 </ul>

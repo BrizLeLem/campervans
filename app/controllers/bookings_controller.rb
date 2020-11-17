@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   def new
-    @campervan = Campervan.find(params[:id])
+    @campervan = Campervan.find(params[:campervan_id])
     @booking = Booking.new
   end
 
@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
       redirect_to @campervan
     else
       render "new"
+    end
   end
 
   def index_by_user

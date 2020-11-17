@@ -3,14 +3,12 @@
   <%= f.input_field :title %>
   <%= f.label :description %>
   <%= f.input_field :description %>
-  <%= f.association :brand %>
-  <%= f.association :model %>
-  <%= f.label :location %>
-  <%= f.input_field :location %>
+  <%= f.input :brand, collection: ['VW', 'BMW'] %>
+  <%= f.input :model, collection: ['Fiesta', 'BMW'] %>
   <%= f.label :capacity %>
   <%= f.input_field :capacity %>
   <%= f.label :price %>
-  <%= f.input_field :price %>
+  <%= f.input_field :price_per_night %>
   <%= f.input :photos, as: :file %>
   <%= f.submit 'Save' %>
 <% end %>
