@@ -1,0 +1,13 @@
+<h1>My bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+        <li>
+          <%= booking.campervan.photos %>
+          <%= link_to campervan.title, campervan_path(campervan) %>
+          <%= booking.start_date %>
+          <%= booking.end_date %>
+          <%= booking.total_price %>
+        </li>
+  <% end %>
+</ul>

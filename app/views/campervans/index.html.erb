@@ -1,1 +1,13 @@
-index.html.erb
+<h1>Campervans</h1>
+
+<ul>
+  <% @campervans.each do |campervan| %>
+        <li>
+          <%= campervan.photos %>
+          <%= link_to campervan.title, campervan_path(campervan) %>
+          <%= campervan.brand %>
+          <%= campervan.model %>
+          <%= campervan.price %>
+        </li>
+  <% end %>
+</ul>
