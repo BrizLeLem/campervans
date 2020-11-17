@@ -1,5 +1,5 @@
 class CampervansController < ApplicationController
-  before_action :set_campervan, only: [:show, :destroy]
+  before_action :set_campervan, only: %i[show destroy]
 
   def index
     @campervans = Campervan.all
@@ -24,7 +24,7 @@ class CampervansController < ApplicationController
   private
 
   def campervan_params
-    params.require(:campervan).permit(:title, :description)
+    params.require(:campervan).permit(:title, :description, :photo)
   end
 
   def set_campervan
