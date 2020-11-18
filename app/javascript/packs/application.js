@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // const element = document.querySelector("#booking_start_date")
-   initMapbox();
+
   flatpickr("#booking_start_date", {
     minDate: new Date(),
         "plugins": [new rangePlugin({ input: "#booking_end_date"})],
@@ -45,5 +45,6 @@ document.addEventListener('turbolinks:load', () => {
     minDate: new Date(),
         "plugins": [new rangePlugin({ input: "#search_end_date"})],
   });
+  initMapbox();
 
 });
