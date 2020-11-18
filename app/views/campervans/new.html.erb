@@ -1,14 +1,24 @@
-<%= simple_form_for(@campervan) do |f| %>
-  <%= f.label :title %>
-  <%= f.input_field :title %>
-  <%= f.label :description %>
-  <%= f.input_field :description %>
-  <%= f.input :brand, collection: ['VW', 'BMW'] %>
-  <%= f.input :model, collection: ['Fiesta', 'BMW'] %>
-  <%= f.label :capacity %>
-  <%= f.input_field :capacity %>
-  <%= f.label :price %>
-  <%= f.input_field :price_per_night %>
-  <%= f.input :photos, as: :file %>
-  <%= f.submit 'Save' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h1>Advertise a camper van</h1>
+
+      <div class="form-group">
+        <%= simple_form_for(@campervan) do |f| %>
+          <%= f.label :title %>
+          <%= f.input_field :title, class: "form-control" %>
+          <%= f.label :description %>
+          <%= f.input_field :description, class: "form-control"%>
+          <%= f.input :brand, collection: ['Volkswagen', 'BMW', 'Mercedes', 'Ford'], class: "form-control" %>
+          <%= f.input :model, collection: [], class: "form-control"%>
+          <%= f.label :capacity %>
+          <%= f.input_field :capacity, class: "form-control"%>
+          <%= f.label :price %>
+          <%= f.input_field :price_per_night, class: "form-control"%>
+          <%= f.input :photos, as: :file %>
+          <%= f.submit 'Post ad', class: "btn-flat" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

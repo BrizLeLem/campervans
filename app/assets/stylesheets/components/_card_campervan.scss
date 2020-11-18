@@ -1,0 +1,71 @@
+.card-campervan {
+  display: flex;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  h2 {
+    color: $copper-red;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  p {
+    color: black;
+    font-size: 14px;
+    opacity: 0.7;
+    margin: 0;
+  }
+}
+.card-campervan p {
+}
+
+// .card-campervan > img {
+//   width: 180px;
+//   object-fit: cover;
+// }
+// .card-campervan a {
+//   color: $copper-red;
+//   &:hover {
+//     text-decoration: none;
+//   }
+// // }
+// .card-campervan h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+// }
+
+.card-campervan .bold {
+  font-weight: bold;
+}
+
+.card-campervan .card-campervan-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  // align-items: flex-end;
+
+  padding: 16px;
+  display: flex;
+  position: relative;
+}
+
+.card-campervan-infos .card-campervan-user {
+  position: absolute;
+
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.card-pricing {
+  text-align: right;
+}
+
+.map-fit {
+  width: 100%;
+}

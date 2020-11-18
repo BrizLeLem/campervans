@@ -20,6 +20,7 @@ class CampervansController < ApplicationController
 
   def create
     @campervan = Campervan.new(campervan_params)
+    @campervan.user = current_user
     if @campervan.save
       redirect_to campervan_path(@campervan), notice: 'Your campervan was successfully created! 🚐'
     else
