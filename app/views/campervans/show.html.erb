@@ -2,6 +2,11 @@
 
 
 <h1><strong><%= @campervan.title %></strong></h1>
+
+<div>
+ <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
+</div>
+
 <div>
   <%= @campervan.brand %>
   <%= @campervan.model %>

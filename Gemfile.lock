@@ -260,6 +260,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   cloudinary
+  date_wrapper
   devise
   dotenv-rails
   faker
