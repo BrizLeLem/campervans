@@ -38,5 +38,9 @@ document.addEventListener('turbolinks:load', () => {
     minDate: new Date(),
         "plugins": [new rangePlugin({ input: "#booking_end_date"})],
   });
+  flatpickr("#search_start_date", {
+    minDate: new Date(),
+        "plugins": [new rangePlugin({ input: "#search_end_date"})],
+  });
 
 });

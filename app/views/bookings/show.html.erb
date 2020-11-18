@@ -1,0 +1,15 @@
+<h1>Booking Confirmation</h1>
+
+
+ <h3>Your booking is confirmed</h3>
+
+  <%= link_to booking.campervan.title, campervan_path(booking.campervan)  %>
+  <% if booking.campervan.photo.attached? %>
+    <%= cl_image_tag booking.campervan.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else %>
+    There is no photo yet!
+    <%= image_tag("https://source.unsplash.com/random", alt:"image", crop: :fill, height: 500, class: "card-img-top rounded") %>
+  <% end %>
+  <p>Pick-up date: <%= booking.start_date %></p>
+  <p>Drop-off date: <%= booking.end_date %></p>
+  <p>Total Price: <%= booking.total_price %></p>
