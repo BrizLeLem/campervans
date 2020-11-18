@@ -10,10 +10,12 @@
   </head>
   <body>
     <%= render "shared/navbar" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="container-fluid">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
     <%= render "shared/footer" %>
   </body>
 </html>
