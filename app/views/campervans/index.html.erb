@@ -16,5 +16,9 @@
     <% end %>
   </div>
   <div class="col-5 show-border">
-    <img class="map-fit" src="https://www.komar.de/media/catalog/product/cache/4/image/1280x/17f82f742ffe127f42dca9de82fb58b1/4/-/4-050_worldmap_neu_ma_1.jpg" alt=""></div>
+    <div id="map"
+     style="width: 200%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
 </div>
