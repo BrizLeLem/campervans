@@ -8,7 +8,7 @@
             <%= cl_image_tag booking.campervan.photo.key, height: 300, width: 400, crop: :fill %>
           <% else %>
             There is no photo yet!
-            <%= image_tag("https://source.unsplash.com/random", alt:"image", crop: :fill, height: 500, class: "card-img-top rounded") %>
+            <%= image_tag("https://source.unsplash.com/random", alt:"image", height: 300, width: 400, crop: :fill) %>
           <% end %>
           <p>Pick-up date: <%= booking.start_date %></p>
           <p>Drop-off date: <%= booking.end_date %></p>
@@ -17,7 +17,22 @@
   <% end %>
 </ul>
 
-<h1>My Vans Bookings</h1>
+<h1>My Vans</h1>
+
+<ul>
+  <% @user_vans.each do |user_van| %>
+        <li>
+          <%= link_to user_van.title %>
+          <%= user_van.user.first_name %>
+          • <%= link_to campervan_path(user_van), method: :delete, data: {confirm: "Delete #{user_van.title}?"} do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
+        </li>
+  <% end %>
+</ul>
+
+
+<h1>My Van Bookings</h1>
 
 <ul>
   <% @van_bookings.each do |van_booking| %>
@@ -27,7 +42,7 @@
             <%= cl_image_tag van_booking.campervan.photo.key, height: 300, width: 400, crop: :fill %>
           <% else %>
             There is no photo yet!
-            <%= image_tag("https://source.unsplash.com/random", alt:"image", crop: :fill, height: 500, class: "card-img-top rounded") %>
+            <%= image_tag("https://source.unsplash.com/random", alt:"image", height: 300, width: 400, crop: :fill) %>
           <% end %>
           <p>Pick-up date: <%= van_booking.start_date %></p>
           <p>Drop-off date: <%= van_booking.end_date %></p>
