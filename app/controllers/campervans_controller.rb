@@ -3,6 +3,12 @@ class CampervansController < ApplicationController
 
   def index
     @campervans = Campervan.all
+    @markers = @campervans.geocoded.map do |campervan|
+      {
+        lat: campervan.latitude,
+        lng: campervan.longitude
+      }
+    end
   end
 
   def show
