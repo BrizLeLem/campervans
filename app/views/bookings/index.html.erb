@@ -1,5 +1,8 @@
-<h1>My bookings</h1>
-
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h1>My bookings</h1>
+      
 <ul>
   <% @bookings.each do |booking| %>
         <li>
@@ -47,9 +50,7 @@
           <p>Pick-up date: <%= van_booking.start_date %></p>
           <p>Drop-off date: <%= van_booking.end_date %></p>
           <p>Total Price: <%= van_booking.total_price %></p>
-
-
-
         </li>
   <% end %>
 </ul>
+
