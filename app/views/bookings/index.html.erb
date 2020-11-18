@@ -3,16 +3,38 @@
 <ul>
   <% @bookings.each do |booking| %>
         <li>
-          <%= booking.campervan.photos %>
-          <%= link_to campervan.title, campervan_path(campervan) %>
-          <%= booking.start_date %>
-          <%= booking.end_date %>
-          <%= booking.total_price %>
+          <%= link_to booking.campervan.title, campervan_path(booking.campervan)  %>
+          <% if booking.campervan.photo.attached? %>
+            <%= cl_image_tag booking.campervan.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            There is no photo yet!
+            <%= image_tag("https://source.unsplash.com/random", alt:"image", crop: :fill, height: 500, class: "card-img-top rounded") %>
+          <% end %>
+          <p>Pick-up date: <%= booking.start_date %></p>
+          <p>Drop-off date: <%= booking.end_date %></p>
+          <p>Total Price: <%= booking.total_price %></p>
         </li>
   <% end %>
 </ul>
 
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<h1>My Vans Bookings</h1>
+
+<ul>
+  <% @van_bookings.each do |van_booking| %>
+        <li>
+          <%= link_to van_booking.campervan.title, campervan_path(van_booking.campervan)  %>
+          <% if van_booking.campervan.photo.attached? %>
+            <%= cl_image_tag van_booking.campervan.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            There is no photo yet!
+            <%= image_tag("https://source.unsplash.com/random", alt:"image", crop: :fill, height: 500, class: "card-img-top rounded") %>
+          <% end %>
+          <p>Pick-up date: <%= van_booking.start_date %></p>
+          <p>Drop-off date: <%= van_booking.end_date %></p>
+          <p>Total Price: <%= van_booking.total_price %></p>
+
+
+
+        </li>
+  <% end %>
+</ul>

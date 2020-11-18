@@ -22,7 +22,7 @@ class CampervansController < ApplicationController
     @campervan = Campervan.new(campervan_params)
     @campervan.user = current_user
     if @campervan.save
-      redirect_to campervan_path(@campervan), notice: 'Your campervan was successfully created! 🚐'
+      redirect_to campervan_path(@campervan), alert: 'Your campervan was successfully created! 🚐'
     else
       render :new
     end

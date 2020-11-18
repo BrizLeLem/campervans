@@ -4,7 +4,12 @@
 <h1><strong><%= @campervan.title %></strong></h1>
 
 <div>
- <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
+  <% if @campervan.photo.attached? %>
+     <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else %>
+      There is no photo yet!
+      <%= image_tag("https://source.unsplash.com/random", alt:"image", crop: :fill, height: 500, class: "card-img-top rounded") %>
+  <% end %>
 </div>
 
 <div>
@@ -17,3 +22,5 @@
 <div>
   <%= link_to 'BOOK NOW!', new_campervan_booking_path(@campervan) %>
 </div>
+
+

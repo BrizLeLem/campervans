@@ -1,4 +1,9 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = Booking.where(user: current_user)
+    @van_bookings = Booking.where(campervan: Campervan.where(user: current_user))
+  end
+
   def new
     @campervan = Campervan.find(params[:campervan_id])
     @booking = Booking.new
@@ -10,7 +15,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.campervan = @campervan
     if @booking.save
-      redirect_to @campervan
+      redirect_to bookings_path
     else
       render "new"
     end
@@ -20,7 +25,6 @@ class BookingsController < ApplicationController
     # @user =
     @booking = Booking.where(user: current_user)
   end
-
 
   private
 
