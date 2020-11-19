@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
   def index
     @bookings = Booking.where(user: current_user)
-    @van_bookings = Booking.where(campervan: Campervan.where(user: current_user))
+    @van_bookings = Booking.joins(:campervan).where(user: current_user)
+    @user_vans = Campervan.where(user: current_user)
   end
 
   def new
