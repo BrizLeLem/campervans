@@ -1,10 +1,10 @@
 <div class="search-bar">
   <div class="container search-bar-home">
   <%= simple_form_for :search, url: campervans_path, method: :get do |f| %>
-    <%= f.input :city %>
+    <%= f.input :city, input_html: {value: params[:search][:city]} %>
     <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
     <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-    <%= f.input :brand, collection: ['Volkswagen', 'Nissan', 'Mercedes', 'Ford', 'Honda', 'Toyota'] %>
+    <%= f.input :brand, collection: ['Volkswagen', 'Nissan', 'Mercedes', 'Ford', 'Honda', 'Toyota'], input_html: {selected: params[:search][:brand]} %>
     <%= f.submit class: "btn" %>
   <% end %>
   </div>
@@ -42,3 +42,5 @@
     </div>
   </div>
 </div>
+
+<script>document.querySelector("option[value='<%= params[:search][:brand] %>']").selected = true</script>
