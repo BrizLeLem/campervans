@@ -7,9 +7,7 @@ class CampervansController < ApplicationController
       {
         lat: campervan.latitude,
         lng: campervan.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { campervan: campervan }),
-        image_url: campervan.photo
-
+        infoWindow: render_to_string(partial: "../views/campervans/infowindow", locals: { campervan: campervan })
       }
     end
   end
