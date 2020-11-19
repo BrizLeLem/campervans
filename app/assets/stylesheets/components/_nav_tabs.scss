@@ -1,0 +1,12 @@
+.sticky_tabs {
+  position: sticky;
+  top: 76.07px;
+  width: 100%;
+  z-index: 10000;
+  background-color: #F4F4F4;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+

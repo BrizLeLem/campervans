@@ -8,7 +8,7 @@
     <%= cl_image_tag booking.campervan.photo.key, height: 300, width: 400, crop: :fill %>
   <% else %>
     There is no photo yet!
-    <%= image_tag("https://source.unsplash.com/random", alt:"image", crop: :fill, height: 500, class: "card-img-top rounded") %>
+    <%= image_tag("https://i.pinimg.com/originals/65/b1/3f/65b13f6ab12de47cfcdefb32b2d67387.jpg", alt:"image", crop: :fill, height: 500, class: "card-img-top rounded") %>
   <% end %>
   <p>Pick-up date: <%= booking.start_date %></p>
   <p>Drop-off date: <%= booking.end_date %></p>

@@ -7,8 +7,6 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "flatpickr/dist/flatpickr.min.css";
-@import "mapbox-gl/dist/mapbox-gl";
 
 // Your CSS partials
 @import "components/index";
@@ -16,4 +14,7 @@
 @import "components/footer";
 @import "components/homepage_container";
 @import "components/buttons";
+
 @import "components/card_campervan";
+@import "components/card_my_bookings";
+@import "components/nav_tabs";

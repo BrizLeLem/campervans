@@ -1,0 +1,21 @@
+.card-my-bookings {
+  display: flex;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  h2 {
+    color: $copper-red;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  p {
+    color: black;
+    font-size: 14px;
+    opacity: 0.7;
+    margin: 0;
+  }
+}
