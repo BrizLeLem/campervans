@@ -6,10 +6,10 @@ class CampervansController < ApplicationController
       @campervans = Campervan.near(params[:search][:city], 5)
     elsif params[:search][:brand].present?
       @campervans = Campervan.where(brand: params[:search][:brand])
+    elsif
+      @campervans = Campervan.all
     elsif params[:search].present?
       @campervans = Campervan.near(params[:search][:city], 5).where(brand: params[:search][:brand])
-    else
-      @campervans = Campervan.all
     end
 
     @markers = @campervans.geocoded.map do |campervan|
