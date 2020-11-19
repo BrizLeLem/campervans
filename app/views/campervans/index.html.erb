@@ -1,29 +1,33 @@
-<h1>Campervans</h1>
-<div class="row justify-content-center">
-  <div class="col-sm-9 col-md-8 col-lg-7 col-xl-5">
-    <% @campervans.each do |campervan| %>
-      <%= link_to campervan_path(campervan) do %>
-        <div class="card-campervan mb-4">
-          <% if campervan.photo.attached? %>
-            <%= cl_image_tag campervan.photo.key, height: 200, width: 250, crop: :fill %>
-          <% else %>
-            <%= image_tag("https://i.pinimg.com/originals/65/b1/3f/65b13f6ab12de47cfcdefb32b2d67387.jpg", alt:"image", crop: :fill, height: 200, width: 250) %>
-          <% end %>
+<div class="container">
+  <h1 class="my-4">Campervans</h1>
 
-          <div class="card-campervan-infos m-3">
-            <h2><%= campervan.title %></h2>
-            <p><%= campervan.description %></p>
-            <p class="bold"><%= campervan.brand %> <%= campervan.model %></p>
-            <h2 class="card-pricing"><%= campervan.price_per_night %>€/night</h2>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <% @campervans.each do |campervan| %>
+        <%= link_to campervan_path(campervan) do %>
+          <div class="card-campervan mb-4">
+            <% if campervan.photo.attached? %>
+              <%= cl_image_tag campervan.photo.key, height: 200, width: 250, crop: :fill %>
+            <% else %>
+              <%= image_tag("https://i.pinimg.com/originals/65/b1/3f/65b13f6ab12de47cfcdefb32b2d67387.jpg", alt:"image", crop: :fill, height: 200, width: 250) %>
+            <% end %>
+
+            <div class="card-campervan-infos m-3">
+              <h2><%= campervan.title %></h2>
+              <p><%= campervan.description %></p>
+              <p class="bold"><%= campervan.brand %> <%= campervan.model %></p>
+              <h2 class="card-pricing"><%= campervan.price_per_night %>€/night</h2>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <div class="col-5">
-    <div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
+
+    <div class="col-6">
+      <div id="map"
+       style="width: 100%; height: 600px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
   </div>
 </div>

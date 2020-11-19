@@ -2,7 +2,11 @@ class CampervansController < ApplicationController
   before_action :set_campervan, only: %i[show destroy]
 
   def index
-    if params[:search].present?
+    if params[:search][:city].present?
+      @campervans = Campervan.near(params[:search][:city], 5)
+    elsif params[:search][:brand].present?
+      @campervans = Campervan.where(brand: params[:search][:brand])
+    elsif params[:search].present?
       @campervans = Campervan.near(params[:search][:city], 5).where(brand: params[:search][:brand])
     else
       @campervans = Campervan.all
