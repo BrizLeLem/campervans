@@ -1,9 +1,10 @@
 import mapboxgl from 'mapbox-gl';
+import "mapbox-gl/dist/mapbox-gl.css";
 
-const mapElement = document.getElementById('map');
+const mapElement = () => document.getElementById('map');
 
 const buildMap = () => {
-  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+  mapboxgl.accessToken = mapElement().dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10'
@@ -28,9 +29,9 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 const initMapbox = () => {
-  if (mapElement) {
+  if (mapElement()) {
     const map = buildMap();
-    const markers = JSON.parse(mapElement.dataset.markers);
+    const markers = JSON.parse(mapElement().dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
   }

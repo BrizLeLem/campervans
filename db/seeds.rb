@@ -53,7 +53,8 @@ c = 1
   file = File.open(filepath)
   puts "creating campervan #{c}"
   filename = "camper#{c}.jpeg"
-  campervan = Campervan.new(title: Faker::FunnyName.two_word_name, description: Faker::GreekPhilosophers.quote, brand: brands.sample, model: models.sample, capacity: (1..6).to_a.sample, price_per_night: (40..100).to_a.sample, address: address.sample)
+  features = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+  campervan = Campervan.new(title: Faker::FunnyName.two_word_name, description: Faker::GreekPhilosophers.quote, features: features, brand: brands.sample, model: models.sample, capacity: (1..6).to_a.sample, price_per_night: (40..100).to_a.sample, address: address.sample)
   campervan.user = campervan_owners.sample
   campervan.photo.attach(io: file, filename: filename, content_type: 'image/jpeg')
   campervan.save
