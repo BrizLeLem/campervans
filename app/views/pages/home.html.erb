@@ -1,9 +1,13 @@
 <%= render "shared/banner" %>
 <div class="container my-4">
 
+<div class= text-center>
+  Search for nearby campervan rentals:
+</div>
+
   <%= simple_form_for :search, url: campervans_path, method: :get do |f| %>
   <%= f.input :city %>
-  <%= f.submit %>
+  <%= f.submit "Search", class: "btn btn-flat"%>
   <% end %>
 
   <div class="cards justify-content-between my-4" >
