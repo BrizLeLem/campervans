@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-6">
       <h1>Advertise a camper van</h1>
-
       <div class="form-group">
         <%= simple_form_for(@campervan) do |f| %>
           <%= f.label :title %>
@@ -13,7 +12,9 @@
           <%= f.input :model, collection: ['Multivan', 'California', 'C-Max', 'Tourneo', 'Sprinter', 'Vaneo', 'Bluebird', 'Interstar' ], class: "form-control"%>
           <%= f.label :capacity %>
           <%= f.input_field :capacity, class: "form-control"%>
-          <%= f.label :price %>
+          <%= f.label :address %>
+          <%= f.input_field :address, class: "form-control"%>
+          <%= f.label :price_per_night %>
           <%= f.input_field :price_per_night, class: "form-control"%>
           <%= f.input :photo, as: :file %>
           <%= f.submit 'Post ad', class: "btn-flat" %>
