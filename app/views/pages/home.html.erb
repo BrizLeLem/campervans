@@ -1,5 +1,9 @@
 <%= render "shared/banner" %>
 <div class="container my-4">
+  <div class="text-center">
+    <p>Search for available campervan rentals near you:</p>
+  </div>
+
   <%= simple_form_for :search, url: root_path, method: :get do |f| %>
     <div class="form-group search-bar">
       <div>
