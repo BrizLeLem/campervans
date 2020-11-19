@@ -3,6 +3,7 @@ class CampervansController < ApplicationController
 
   def index
     @campervans = Campervan.all
+    @campervans = Campervan.near(params[:search][:city], 5) if params[:search].present?
     @markers = @campervans.geocoded.map do |campervan|
       {
         lat: campervan.latitude,
