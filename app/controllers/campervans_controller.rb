@@ -2,8 +2,12 @@ class CampervansController < ApplicationController
   before_action :set_campervan, only: %i[show destroy]
 
   def index
-    @campervans = Campervan.all
-    @campervans = Campervan.near(params[:search][:city], 5) if params[:search].present?
+    if params[:search].present?
+      @campervans = Campervan.near(params[:search][:city], 5).where(brand: params[:search][:brand])
+    else
+      @campervans = Campervan.all
+    end
+
     @markers = @campervans.geocoded.map do |campervan|
       {
         lat: campervan.latitude,
