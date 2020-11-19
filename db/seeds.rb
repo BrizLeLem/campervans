@@ -37,12 +37,16 @@ campervan_owners = [User.all.sample, User.all.sample]
 
 brands = %w(Volkswagen Fiat Hyundai Mercedes)
 models = %w(X1 T3 W7 LT DRIVE SUPER quicks)
-address = ["Planufer 80, Berlin", "Torstr. 70, Berlin", "Checkpoint Charlie, Berlin", "Alexanderplatz, Berlin"]
+address = ["Plaine de Baud
+35000 Rennes","Thabor, Saint Hélier
+Rennes","Sud-Gare
+Rennes","13-1 Rue des Fossés
+35000 Rennes","Planufer 80, Berlin", "Torstr. 70, Berlin", "Checkpoint Charlie, Berlin", "Alexanderplatz, Berlin"]
 
 puts "Creating 5 campervans and assigning them to the 2 owners..."
 
 c = 1
-5.times do
+8.times do
   number = (1..4).to_a.sample
   p "using picture #{number}"
   filepath = "./db/seed-images/camper#{number}.jpeg"
