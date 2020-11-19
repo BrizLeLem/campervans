@@ -12,3 +12,14 @@
   width: 50px;
   border-radius: 5px;
 }
+
+.sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
