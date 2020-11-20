@@ -1,30 +1,37 @@
 <div class="container">
-    <h1><strong><%= @campervan.title %></strong></h1>
-
-    <div>
+  <div class="row my-3">
+    <div class="col-12">
+      <h1><strong><%= @campervan.title %></strong></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 van-photo">
       <% if @campervan.photo.attached? %>
-         <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
       <% else %>
-          <%= image_tag("https://i.pinimg.com/originals/65/b1/3f/65b13f6ab12de47cfcdefb32b2d67387.jpg", alt:"image", crop: :fill, height: 200, width: 250) %>
+        <%= image_tag("https://i.pinimg.com/originals/65/b1/3f/65b13f6ab12de47cfcdefb32b2d67387.jpg", alt:"image", crop: :fill, height: 200, width: 250) %>
       <% end %>
+      <div>
+        <p>Offered by <%= @campervan.user.first_name %></p>
+      </div>
     </div>
-
-    <div>
-      <%= @campervan.brand %>
-      <%= @campervan.model %>
+    <div class="col-3 d-flex align-content-between flex-wrap">
+      <div>
+        <h3>Facts</h3>
+        <strong>
+          <%= @campervan.brand %>
+          <%= @campervan.model %>
+        </strong>
+        <p>Capacity: <%= @campervan.capacity %> people</p>
+        <p><%= @campervan.price_per_night %>&euro; per night</p>
+      </div>
+      <div>
+        <%= link_to 'BOOK NOW!', new_campervan_booking_path(@campervan), class: "btn btn-flat btn-book" %>
+      </div>
     </div>
-    <div>
-      Capacity: <%= @campervan.capacity %> people
+    <div class="col-3 van-features">
+      <h3>Features</h3>
+      <p><%= @campervan.features %></p>
     </div>
-    <div>
-      <%= @campervan.price_per_night %>&euro; per night
-    </div>
-
-    <div>
-      Posted by <%= @campervan.user.first_name %>
-    </div>
-    <div>
-      <%= link_to 'BOOK NOW!', new_campervan_booking_path(@campervan), class: "btn btn-flat" %>
-    </div>
-
+  </div>
 </div>

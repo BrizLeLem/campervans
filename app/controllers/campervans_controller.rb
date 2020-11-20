@@ -1,4 +1,3 @@
-
 class CampervansController < ApplicationController
   before_action :set_campervan, only: %i[show destroy]
 
@@ -48,7 +47,7 @@ class CampervansController < ApplicationController
   private
 
   def campervan_params
-    params.require(:campervan).permit(:title, :description, :brand, :model, :photo, :capacity, :price_per_night)
+    params.require(:campervan).permit(:title, :description, :brand, :model, :photo, :capacity, :price_per_night, :address)
   end
 
   def set_campervan
