@@ -23,10 +23,6 @@ user = User.new(email: "alizeh@trails.com", first_name: "Alizeh", last_name: "K"
 user.password = "sunshine"
 user.save
 
-user = User.new(email: "leeanna@hollywood.com", first_name: "Leeanna", last_name: "S")
-user.password = "sunshine"
-user.save
-
 user = User.new(email: "thomas@dogs.com", first_name: "Thomas", last_name: "P")
 user.password = "sunshine"
 user.save
@@ -35,21 +31,20 @@ puts "Selecting 2 random campervan owners..."
 
 campervan_owners = [User.all.sample, User.all.sample]
 
-brands = %w(Volkswagen Fiat Hyundai Mercedes)
+brands = %w(Volkswagen Nissan Mercedes Ford Honda Toyota)
 models = %w(X1 T3 W7 LT DRIVE SUPER quicks)
 address = ["Plaine de Baud
 35000 Rennes","Thabor, Saint Hélier
 Rennes","Sud-Gare
 Rennes","13-1 Rue des Fossés
-35000 Rennes","Planufer 80, Berlin", "Torstr. 70, Berlin", "Checkpoint Charlie, Berlin", "Alexanderplatz, Berlin"]
+35000 Rennes", "Hohenzollerndamm 5, Berlin", "Karl-Marx-Str. 30, Berlin", "Planufer 80, Berlin", "Torstr. 70, Berlin", "Checkpoint Charlie, Berlin", "Alexanderplatz, Berlin"]
 
-puts "Creating 5 campervans and assigning them to the 2 owners..."
+puts "Creating 13 campervans and assigning them to the 2 owners..."
 
 c = 1
-8.times do
-  number = (1..4).to_a.sample
-  p "using picture #{number}"
-  filepath = "./db/seed-images/camper#{number}.jpeg"
+14.times do
+  p "using picture #{c}"
+  filepath = "./db/seed-images/camper#{c}.jpeg"
   file = File.open(filepath)
   puts "creating campervan #{c}"
   filename = "camper#{c}.jpeg"
@@ -81,5 +76,12 @@ booking.campervan = campervan
 booking.user = user
 booking.save
 end
+
+#creating user without bookings
+
+user = User.new(email: "leeanna@hollywood.com", first_name: "Leeanna", last_name: "S")
+user.password = "sunshine"
+user.save
+
 
 p "DOOOOOONE!!!!!!!! GET BACK TO WORK!!!!!!"
