@@ -1,18 +1,17 @@
 <div class="container">
   <ul class="nav list-inline tabs-underlined" id="myTab" role="tablist">
     <li role="presentation">
-      <a class="nav-link tab-underlined active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+      <a class="nav-link tab-underlined" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
     </li>
     <li role="presentation">
-      <a class="nav-link tab-underlined" id="bookings-tab" data-toggle="tab" href="#bookings" role="tab" aria-controls="bookings" aria-selected="false">Bookings</a>
+      <a class="nav-link tab-underlined active" id="bookings-tab" data-toggle="tab" href="#bookings" role="tab" aria-controls="bookings" aria-selected="true">Bookings</a>
     </li>
     <li role="presentation">
       <a class="nav-link tab-underlined" id="vans-tab" data-toggle="tab" href="#vans" role="tab" aria-controls="vans" aria-selected="false">Listings</a>
     </li>
   </ul>
-
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <div class="container">
         <div class="row">
           <div class="col-6">
@@ -23,12 +22,13 @@
         </div>
       </div>
     </div>
-    <div class="tab-pane fade" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
+    <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
       <div class="container">
+        <h1>My Bookings</h1>
         <div class="row">
           <div class="col-6">
-              <% @bookings.each do |booking| %>
-                <%= link_to campervan_path(booking.campervan) do %>
+            <% @bookings.each do |booking| %>
+              <%= link_to campervan_path(booking.campervan) do %>
                 <div class="card-product mt-4">
                   <% if booking.campervan.photo.attached? %>
                     <%= cl_image_tag booking.campervan.photo.key, height: 100, width: 150, crop: :fill %>
@@ -42,8 +42,8 @@
                     <p><strong>Total Price: <%= booking.total_price %> €</strong></p>
                   </div>
                 </div>
-                <% end %>
               <% end %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -53,42 +53,48 @@
         <div class="row">
           <div class="col-6">
             <h1>My Vans</h1>
-
-            <ul>
+            <div class="d-flex flew-wrap">
               <% @user_vans.each do |user_van| %>
-                    <li>
-                      <%= link_to user_van.title %>
-                      <%= user_van.user.first_name %>
-                      • <%= link_to campervan_path(user_van), method: :delete, data: {confirm: "Delete #{user_van.title}?"} do %>
-                    <i class="fas fa-trash-alt"></i>
+                <%= link_to campervan_path(user_van) do %>
+                  <div class="card-campervan mr-3 mb-3 m">
+                    <% if user_van.photo.attached? %>
+                      <%= cl_image_tag user_van.photo.key, height: 200, width: 250, crop: :fill %>
+                    <% else %>
+                      <%= image_tag("https://i.pinimg.com/originals/65/b1/3f/65b13f6ab12de47cfcdefb32b2d67387.jpg", alt:"image", crop: :fill, height: 200, width: 250) %>
                     <% end %>
-                    </li>
-              <% end %>
-            </ul>
-
-
-            <h1>My Van Bookings</h1>
-
-            <ul>
-              <% @van_bookings.each do |van_booking| %>
-                    <li>
-                      <%= link_to van_booking.campervan.title, campervan_path(van_booking.campervan)  %>
-                      <% if van_booking.campervan.photo.attached? %>
-                        <%= cl_image_tag van_booking.campervan.photo.key, height: 300, width: 400, crop: :fill %>
-                      <% else %>
-                        There is no photo yet!
-                        <%= image_tag("https://source.unsplash.com/random", alt:"image", height: 300, width: 400, crop: :fill) %>
+                    <div class="card-campervan-infos m-3">
+                      <h2><%= user_van.title %></h2>
+                      <p><%= user_van.description %></p>
+                      <p class="bold"><%= user_van.brand %> <%= user_van.model %></p>
+                      <h2 class="card-pricing"><%= user_van.price_per_night %>€/night</h2>
+                      <%= link_to campervan_path(user_van), method: :delete, data: {confirm: "Delete #{user_van.title}?"} do %>
+                        <i class="fas fa-trash-alt"></i>
                       <% end %>
-                      <p>Pick-up date: <%= van_booking.start_date %></p>
-                      <p>Drop-off date: <%= van_booking.end_date %></p>
-                      <p>Total Price: <%= van_booking.total_price %></p>
-                    </li>
+                    </div>
+                  </div>
+                <% end %>
               <% end %>
-            </ul>
+            </div>
+            <h1>Your Van's Bookings</h1>
+            <div class="d-flex flew-wrap flex-column">
+              <% @van_bookings.each do |van_booking| %>
+                <div class="card-campervan mr-3 mb-3">
+                  <% if van_booking.campervan.photo.attached? %>
+                    <%= cl_image_tag van_booking.campervan.photo.key, height: 200, width: 250, crop: :fill %>
+                  <% else %>
+                    <%= image_tag("https://i.pinimg.com/originals/65/b1/3f/65b13f6ab12de47cfcdefb32b2d67387.jpg", alt:"image", crop: :fill, height: 200, width: 250) %>
+                  <% end %>
+                  <div class="card-campervan-infos align-items-center justify-content-center">
+                    <h2 class="">Total price: <%= van_booking.total_price %>€</h2>
+                    <p class="">Pickup: <%= van_booking.start_date %></p>
+                    <p class="">Dropoff: <%= van_booking.end_date %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
