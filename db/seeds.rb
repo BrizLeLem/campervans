@@ -23,9 +23,12 @@ user = User.new(email: "alizeh@trails.com", first_name: "Alizeh", last_name: "K"
 user.password = "sunshine"
 user.save
 
-user = User.new(email: "thomas@dogs.com", first_name: "Thomas", last_name: "P")
+
+
+user = User.new(email: "leeanna@hollywood.com", first_name: "Leeanna", last_name: "S")
 user.password = "sunshine"
 user.save
+
 
 puts "Selecting 2 random campervan owners..."
 
@@ -79,9 +82,8 @@ end
 
 #creating user without bookings
 
-user = User.new(email: "leeanna@hollywood.com", first_name: "Leeanna", last_name: "S")
+user = User.new(email: "thomas@dogs.com", first_name: "Thomas", last_name: "P")
 user.password = "sunshine"
 user.save
-
 
 p "DOOOOOONE!!!!!!!! GET BACK TO WORK!!!!!!"
