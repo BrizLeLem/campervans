@@ -1,4 +1,3 @@
-
 class CampervansController < ApplicationController
   before_action :set_campervan, only: %i[show destroy]
 
@@ -9,16 +8,13 @@ class CampervansController < ApplicationController
       @campervans = Campervan.near(params[:search][:city], 5)
     elsif params[:search][:brand].present?
       @campervans = Campervan.where(brand: params[:search][:brand])
-    elsif
-      @campervans = Campervan.all
+    elsif @campervans = Campervan.all
     elsif params[:search].present?
       @campervans = Campervan.near(params[:search][:city], 5).where(brand: params[:search][:brand])
       @campervans = @campervans.near(params[:search][:city], 5)
     end
 
-    if params[:search][:brand].present?
-      @campervans = @campervans.where(brand: params[:search][:brand])
-    end
+    @campervans = @campervans.where(brand: params[:search][:brand]) if params[:search][:brand].present?
   end
 
   def show
@@ -47,7 +43,7 @@ class CampervansController < ApplicationController
   private
 
   def campervan_params
-    params.require(:campervan).permit(:title, :description, :brand, :model, :photo, :capacity, :price_per_night)
+    params.require(:campervan).permit(:title, :description, :brand, :model, :photo, :capacity, :price_per_night, :address)
   end
 
   def set_campervan
