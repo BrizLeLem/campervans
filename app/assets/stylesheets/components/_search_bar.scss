@@ -1,0 +1,12 @@
+.search-bar {
+  background: white;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar-home .simple_form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

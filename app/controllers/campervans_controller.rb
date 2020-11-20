@@ -1,15 +1,23 @@
+
 class CampervansController < ApplicationController
   before_action :set_campervan, only: %i[show destroy]
 
   def index
     @campervans = Campervan.all
-    @campervans = Campervan.near(params[:search][:city], 5) if params[:search].present?
-    @markers = @campervans.geocoded.map do |campervan|
-      {
-        lat: campervan.latitude,
-        lng: campervan.longitude,
-        infoWindow: render_to_string(partial: "../views/campervans/infowindow", locals: { campervan: campervan })
-      }
+
+    if params[:search][:city].present?
+      @campervans = Campervan.near(params[:search][:city], 5)
+    elsif params[:search][:brand].present?
+      @campervans = Campervan.where(brand: params[:search][:brand])
+    elsif
+      @campervans = Campervan.all
+    elsif params[:search].present?
+      @campervans = Campervan.near(params[:search][:city], 5).where(brand: params[:search][:brand])
+      @campervans = @campervans.near(params[:search][:city], 5)
+    end
+
+    if params[:search][:brand].present?
+      @campervans = @campervans.where(brand: params[:search][:brand])
     end
   end
 
