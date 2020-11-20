@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
   def create
     @campervan = Campervan.find(params[:campervan_id])
     @booking = Booking.new(booking_params)
+    start_date = Date.parse(params[:booking][:start_date])
+    end_date = Date.parse(params[:booking][:end_date])
+    total_price = (end_date - start_date).to_i * @campervan.price_per_night
+    @booking.total_price = total_price
     @booking.user = current_user
     @booking.campervan = @campervan
     if @booking.save
