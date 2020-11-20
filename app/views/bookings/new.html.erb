@@ -1,12 +1,12 @@
 <div class=container>
-
   <h1>New Booking</h1>
-
-  <%= simple_form_for([@campervan, @booking]) do |f| %>
+  <div class="row">
+    <div class="col-4">
+      <%= simple_form_for([@campervan, @booking]) do |f| %>
         <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
         <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
-    <%= f.button :submit, 'BOOK NOW!', class: "bnt btn-flat" %>
-  <% end %>
-
+        <%= f.button :submit, 'BOOK NOW!', class: "bnt btn-flat" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
