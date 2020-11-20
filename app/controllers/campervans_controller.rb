@@ -5,16 +5,20 @@ class CampervansController < ApplicationController
     @campervans = Campervan.all
 
     if params[:search][:city].present?
-      @campervans = Campervan.near(params[:search][:city], 5)
-    elsif params[:search][:brand].present?
-      @campervans = Campervan.where(brand: params[:search][:brand])
-    elsif @campervans = Campervan.all
-    elsif params[:search].present?
-      @campervans = Campervan.near(params[:search][:city], 5).where(brand: params[:search][:brand])
       @campervans = @campervans.near(params[:search][:city], 5)
     end
 
-    @campervans = @campervans.where(brand: params[:search][:brand]) if params[:search][:brand].present?
+    if params[:search][:brand].present?
+      @campervans = @campervans.where(brand: params[:search][:brand])
+    end
+
+    @markers = @campervans.geocoded.map do |campervan|
+      {
+        lat: campervan.latitude,
+        lng: campervan.longitude,
+        infoWindow: render_to_string(partial: "../views/campervans/infowindow", locals: { campervan: campervan })
+      }
+    end
   end
 
   def show
