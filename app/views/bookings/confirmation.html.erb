@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-12">
+      <h1><strong>Shotgun! <%= current_user.first_name %>, you're sitting in the front seat!</strong></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 van-photo rotated">
+      <% if @campervan.photo.attached? %>
+        <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <%= image_tag("https://i.pinimg.com/originals/65/b1/3f/65b13f6ab12de47cfcdefb32b2d67387.jpg", alt:"image", crop: :fill, height: 200, width: 250) %>
+      <% end %>
+      <div>
+        <p><%= @campervan.title %></p>
+      </div>
+    </div>
+    <div class="col-6 d-flex align-content-between flex-wrap">
+      <div>
+        <h3>Your reservation details</h3>
+        <ul class="confirmation-details">
+          <li> <strong><%= @booking.campervan.brand %><%= @booking.campervan.model %></strong></li>
+          <li></strong>From: <%= @booking.start_date %></strong></li>
+      <li></strong>To: <%= @booking.start_date %></strong></li>
+  <li>Total price: <%= @booking.total_price %>€</li>
+  <li>Space for up to <%= @campervan.capacity %> people</li>
+</ul>
+<%= link_to 'AWESOME!', bookings_path(:anchor => "bookings"), class: "btn btn-flat btn-awesome" %>
+</div>
+</div>
+</div>
+</div>
